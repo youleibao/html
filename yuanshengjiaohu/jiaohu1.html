@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>活动</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <link rel="stylesheet" type="text/css" href="css/jiaohu.css"/>
+	    <link rel="stylesheet" type="text/css" href="public/reset.css"/>
+	    <script src="public/mine.js" type="text/javascript"></script>
+	    <script src="public/jquery-1.9.1.js" type="text/javascript"></script>
+	    <script src="public/fastclick.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+		<!--<div class="return">
+			<img src="img/648889807982995704.png"/>
+		</div>-->
+		<div class="section">
+			
+			<img auto="" src="img/dingbu_1.png"/>
+		</div>
+		<div class="section1">
+			<img auto="514" src="img/chuifengji.png"/>
+			<img auto="" src="img/biaoti1.png"/>
+		</div>
+		<div class="section2">
+			<div class="section2_left">
+				<img auto="5853" src="img/tixudao.png"/>
+			</div>
+			<div class="section2_right">
+				<img auto="396" src="img/jianfaqi.png"/>
+				<img auto="75464" class="shuihu" src="img/reshuihu.jpg"/>
+			</div>
+			
+		</div>
+		<div class="section3">
+			<ul>
+				<li><img auto="57711" src="img/chongdianbao.png"/></li>
+				<li><img auto="399" src="img/zhibanjia.png"/></li>
+				<li><img auto="195" src="img/meirongyi.jpg"/></li>
+				<li><img auto="67290" src="img/guangtangji.png"/></li>
+			</ul>
+		</div>
+		<div class="section4">
+			<img auto="" src="img/jiadainjuhui.png"/>
+			<img style="margin-top:.12rem; width: 100%;margin-left: 0px;" auto="" src="img/biaoti2.png"/>
+		</div>
+		<div class="section5">
+			<ul>
+				<li><img auto="175" src="img/fshuihu.png"/></li>
+				<li><img auto="64519" src="img/2.png"/></li>
+				<li><img auto="566" src="img/3.png"/></li>
+				<li><img auto="5854" src="img/4.png"/></li>
+				<li><img auto="64688" src="img/5.png"/></li>
+				<li><img auto="63872" src="img/6.png"/></li>
+				<li><img auto="152" src="img/7.png"/></li>
+				<li><img auto="504" src="img/8.png"/></li>
+				<li><img auto="74805" src="img/9.png"/></li>
+				<li><img auto="69293" src="img/10.png"/></li>
+				<li><img auto="62955" src="img/11.png"/></li>
+				<li><img auto="33499" src="img/12.png"/></li>
+			</ul>
+		</div>
+		<div class="footer">
+			<img auto="" src="img/fanhui.png"/>
+		</div>
+		<!--<input type="" name="" id="num" value="" />-->
+		
+		<!--<button>按钮</button>-->
+	</body>
+	
+	<script type="text/javascript">
+		$(function(){
+			//點擊按鈕返回
+			$(".footer img").click(function() {
+					$("html,body").animate({
+						scrollTop: 0
+					}, 500);
+				});
+			
+				//給原生穿參數
+				$("img").on("click", function() {
+					var num = $(this).attr("auto");
+					if(num != ""){
+						var u = navigator.userAgent,
+							app = navigator.appVersion;
+						var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器   
+						var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端   
+						//alert('是否是Android：'+isAndroid);   
+						//alert('是否是iOS：'+isiOS);  
+						if(isAndroid) {
+			            window.zf.PushActivity(num);
+						} else {
+			            PushActivity(num);
+						}
+				
+					}
+				})
+//				$(".return").on("click",function(){
+//					var u = navigator.userAgent,
+//							app = navigator.appVersion;
+//						var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器   
+//						var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端   
+//						//alert('是否是Android：'+isAndroid);   
+//						//alert('是否是iOS：'+isiOS);  
+//						if(isAndroid) {
+//			              window.zf.back();
+//						} else {
+//			              back();
+//						}
+//				})
+		})
+		
+	</script>
+
+</html>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>支付界面</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="js/js/layer-v3.1.1/layer/theme/default/layer.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../js/laydate.css"/>-->
+		<style type="text/css">
+			body,
+			html {
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.section {
+				width: 100%;
+				height: 3.9rem;
+				background: #2ED0FF;
+				text-align: center;
+			}
+			
+			.section1 {
+				width: 90%;
+				/*height: 4.6rem;*/
+				margin-left: 5%;
+				border-radius: .2rem;
+				box-shadow: #e9e9e9 0px 4px 6px;
+				margin-top: -25%;
+				background: white;
+			}
+			
+			.section1_top {
+				width: 100%;
+				margin-top: .36rem;
+				overflow: hidden;
+				text-align: center;
+			}
+			
+			.section1_top_img {
+				width: 6%;
+				margin-top: .1rem;
+				margin-left: 32%;
+				float: left;
+			}
+			
+			.section1_top_title {
+				width: 30%;
+				font-size: .36rem;
+				float: left;
+				text-align: center;
+			}
+			
+			.section1_center {
+				width: 90%;
+				overflow: hidden;
+				margin-top: .4rem;
+				margin-left: 5%;
+			}
+			
+			.section1_center input {
+				width: 100%;
+				border: 0;
+				background: #f4f4f4;
+				font-size: .3rem;
+				border-radius: .4rem;
+				margin-top: .7rem;
+				padding-left: .2rem;
+				/*border: 1px solid #f4f4f4;*/
+				line-height: .7rem;
+			}
+			
+			.section1_center p {
+				margin-top: .3rem;
+				line-height: .5rem;
+				font-size: .26rem;
+				color: red;
+				float: right;
+			}
+			
+			.section1_bottom {
+				width: 90%;
+				margin-left: 5%;
+				margin-top: .28rem;
+				border-top: 1px solid #f4f4f4;
+			}
+			
+			.section1_bottom p {
+				line-height: .7rem;
+				font-size: .34rem;
+			}
+			
+			.section2_top {
+				width: 100%;
+				overflow: hidden;
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: nowrap;
+			}
+			
+			.section2_top_left {
+				width: 70%;
+			}
+			
+			.section2_top_left p {
+				width: 100%;
+				font-size: .3rem;
+				font-weight: 400;
+				line-height: .9rem;
+				margin-left: .26rem;
+			}
+			
+			.section2_top_left p i {
+				display: inline-block;
+				width: 40%;
+				height: .6rem;
+				line-height: 1rem;
+				font-size: .3rem;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			
+			.min {
+				font-size: .24rem;
+			}
+			
+			.section2_top_right {
+				position: relative;
+			}
+			
+			.anniu {
+				margin-top: .14rem;
+				margin-bottom: .14rem;
+				width: 1.2rem;
+				height: .6rem;
+				background: #f4f4f4;
+				border-radius: .5rem;
+				margin-right: .2rem;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.anniu ul {
+				overflow: hidden;
+				display: flex;
+				justify-content: space-around;
+				line-height: .74rem;
+				font-size: 14px;
+			}
+			
+			.anniu_jian {
+				width: .6rem;
+				height: .6rem;
+				background: white;
+				border-radius: 50%;
+				/*z-index: 3;*/
+				position: absolute;
+				background: white;
+				left: 1px;
+				top: 0;
+			}
+			
+			.section2_bottom {
+				width: 100%;
+				padding-bottom: .2rem;
+			  display: none;
+			}
+			
+			.section2_bottom_left {
+				width: 70%;
+				float: left;
+			}
+			
+			.section2_bottom_right {
+				margin-left: 4.7rem;
+				padding-top: .05rem;
+				position: relative;
+			}
+			
+			.section2_bottom_left p {
+				font-size: .3rem;
+				font-weight: 400;
+				line-height: .9rem;
+				margin-left: .26rem;
+			}
+			
+			.section2_bottom_left p span {
+				display: inline-block;
+				height: .6rem;
+				line-height: 1rem;
+				font-size: .3rem;
+			}
+			
+			.anniu1 {
+				margin-top: .14rem;
+				margin-bottom: .14rem;
+				width: 1.2rem;
+				height: .6rem;
+				background: #F6F6F6;
+				/*border: 1px solid #666666;*/
+				border-radius: .5rem;
+				margin-right: .2rem;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.anniu1 ul {
+				overflow: hidden;
+				display: flex;
+				justify-content: space-around;
+				line-height: .74rem;
+				font-size: 14px;
+			}
+			
+			.anniu1_jian {
+				width: .6rem;
+				height: .6rem;
+				/*margin-left: 2px;*/
+				background: white;
+				border-radius: 50%;
+				position: absolute;
+				background: white;
+				left: 1px;
+				top: 0;
+			}
+			/*新加的*/
+			
+			.section_div1 {
+				width: 90%;
+				margin-left: 5%;
+				padding-top: 1rem;
+			}
+			.section_div1 img{
+				width: 10%;
+				margin-right: .1rem;
+				/*margin-top: -5%;*/
+			}
+			.section_mingzi {
+				display: inline-block;
+				width: 80%;
+				/*background: url(img/icon-dianpu-2.png) no-repeat left;*/
+				color: white;
+				 overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
+				
+			}
+			
+			.anniu1_mengban {
+				width: 1.3rem;
+				height: .7rem;
+				position: absolute;
+				left: 0;
+				top: .17rem;
+				background: rgba(255, 255, 255, 0.2);
+				z-index: 1;
+				border-radius: .5rem;
+				display: none;
+			}
+			
+			.anniu_mengban {
+				width: 1.3rem;
+				height: .7rem;
+				position: absolute;
+				left: 0;
+				top: .14rem;
+				background: rgba(255, 255, 255, 0.2);
+				/*opacity: 0.9;*/
+				z-index: 33;
+				border-radius: .5rem;
+				display: none;
+			}
+			
+			.zhifu_btn {
+				/*position:absolute;*/
+				margin-top: 35%;
+				width: 80%;
+				margin-left: 10%;
+				text-align: center;
+				color: white;
+				background: #2ED0FF;
+				line-height: .8rem;
+				border-radius: .5rem;
+			}
+			
+			.mx {
+				width: 90%;
+				margin-left: 5%;
+			}
+			
+			.tishi_show {
+				width: 50%;
+				position: fixed;
+				left: 25%;
+				bottom: 40%;
+				display: inline-block;
+				background: black;
+				border-radius: .1rem;
+				line-height: .6rem;
+				color: white;
+				font-size: .3rem;
+				text-align: center;
+				z-index: 500;
+				/*display: none;*/
+			}
+			
+			.tanchuang_mengban {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 3;
+				background: rgba(0, 0, 0, 0.2);
+				display: none;
+			}
+			
+			.tanchuang {
+				width: 80%;
+				height: 3.5rem;
+				background: white;
+				margin-top: 54%;
+				margin-left: 10%;
+				text-align: center;
+				border-radius: .2rem;
+				z-index: 400;
+				overflow: hidden;
+			}
+			
+			.tanchuang_p {
+				margin-top: .4rem;
+				font-size: .4rem;
+			}
+			
+			#pass {
+				width: 80%;
+				font-size: .3rem;
+				margin-top: .4rem;
+				line-height: .7rem;
+				border-radius: .1rem;
+				-webkit-appearance: none;
+				border: 0;
+				background: white;
+				text-indent: .2rem;
+				border: 1px solid #CFCFCF;
+			}
+			
+			.tanchuang_ul {
+				width: 100%;
+				margin-top: 0.5rem;
+				line-height: .9rem;
+				display: flex;
+				justify-content: space-around;
+				flex-wrap: nowrap;
+			}
+			
+			.tanchuang_ul li {
+				width: 50%;
+				border-top: 1px solid #F4F4F4;
+			}
+			
+			.anniu1_on {
+				width: .5rem;
+				height: .6rem;
+			}
+			
+			.anniu1_off {
+				width: .5rem;
+				height: .6rem;
+			}
+			
+			.anniu_on {
+				width: .5rem;
+				height: .6rem;
+			}
+			
+			.anniu_off {
+				width: .5rem;
+				height: .6rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="section">
+			<div class="section_div1">
+				<span class="section_mingzi"><img src="img/icon-dianpu-2.png" /></span>
+			</div>
+
+		</div>
+		<div class="section1">
+			<!--<div class="section1_top">
+				<img class="section1_top_img" src="../img/dianpu.png"/>
+				<p class="section1_top_title"></p>
+			</div>-->
+			<div class="section1_center">
+				<input style="text-indent: .1rem;" type="number" maxlength="10" name="" id="div" value="" placeholder="￥&nbsp&nbsp请输入支付金额" />
+				<p class="acquire">您可获得0.00米<span></span></p>
+			</div>
+			<div class="section1_bottom">
+
+				<div class="section2_top">
+					<div class="section2_top_left">
+						<p>当前可用余额：￥<i></i></p>
+						<div class="ret" style="display: none;">
+
+						</div>
+					</div>
+					<div class="section2_top_right">
+						<div class="anniu_mengban">
+
+						</div>
+						<div class="anniu">
+							<ul>
+								<li style="line-height: .6rem;" class="anniu_on"></li>
+								<li style="line-height: .6rem;" class="anniu_off"></li>
+							</ul>
+							<div class="anniu_jian">
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section2_bottom">
+					<div class="section2_bottom_left">
+						<p>当前可用米券：<span id="kyye">0</span></p>
+					</div>
+					<div class="section2_bottom_right">
+						<div class="anniu1_mengban">
+
+						</div>
+						<div class="anniu1">
+							<ul>
+								<li style="line-height: .6rem;" class="anniu1_on"></li>
+								<li style="line-height: .6rem;" class="anniu1_off"></li>
+							</ul>
+							<div class="anniu1_jian">
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<p class="userid" style="display: none;"></p>
+				<p class="storeid" style="display: none;"></p>
+			</div>
+		</div>
+
+		<p class="zhifu_btn">支付</p>
+		<span class="tishi_show"></span>
+		<div class="tanchuang_mengban">
+			<div class="tanchuang">
+				<p class="tanchuang_p">请输入支付密码</p>
+				<input id="pass" type="password" name="" value="" placeholder="&nbsp&nbsp请输入支付密码" />
+				<ul class="tanchuang_ul">
+					<li class="call" style="border-right: 1px solid #F4F4F4;">取消</li>
+					<li class="confirm">确定</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="js/mine.js" type="text/javascript"></script>
+	<script src="js/jquery-1.9.1.js" type="text/javascript"></script>
+	<script src="js/js/layer-v3.1.1/layer/layer.js" type="text/javascript"></script>
+	<script src="js/js/laypage/laypage.js" type="text/javascript"></script>
+	<script src="lib/fastclick.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		//显示隐藏
+		function errInfo() {
+			$('.tishi_show').fadeIn();
+			setTimeout(function() {
+				$('.tishi_show').fadeOut();
+			}, 2000)
+		}
+		var blone = false;
+		var blone1 = false;
+		var amount = "";
+		var balance = "";
+		var grain = "";
+		var StatusUrl = URL+"/home/pay/Status.html?PayId=";
+		var u = navigator.userAgent;
+		$(function() {
+			load();
+			blone = false
+			blone1 = false;
+			$(".anniu_off").on("click", function() {
+				blone = true;
+					$(".anniu_jian").animate({
+						left: "29px"
+					}, 300);
+					$(".anniu").css("background", "#14D200");
+					$(".anniu1_mengban").show();
+				
+
+			});
+			$(".anniu_on").on("click", function() {
+				blone = false
+					$(".anniu_jian").animate({
+						left: "1px"
+					}, 300);
+					$(".anniu").css("background", "#F6F6F6");
+					$(".anniu ul").css("color", "#666666");
+					$(".anniu1_mengban").hide();
+				
+
+			});
+			//余额启动按钮的点击事件
+			$(".anniu1_off").on("click", function() {
+				blone1 = true
+					$(".anniu1_jian").animate({
+						left: "29px"
+					}, 300);
+					$(".anniu1").css("background", "#14D200");
+					$(".anniu_mengban").show();
+					var bili = '';
+					if($(".section2_bottom").css("display") == "none"){
+		          		if(($("#div").val() * $(".ret").html() / 100) <200){
+		            		 bili = ($("#div").val() * $(".ret").html() / 100).toFixed(2);
+		            	}else{
+		            		 bili = 200.00;
+		            	}
+		          	}else{
+		                 bili = ($("#div").val() * $(".ret").html() / 100).toFixed(2); 
+		                
+		         	}
+					if(bili * 1 <= $("#kyye").html() * 1) {
+							$(".acquire").html("您使用米券抵扣" + bili + "元")
+						} else {
+							$(".acquire").html("您使用米券抵扣" + $("#kyye").html() + "元")
+						}
+				
+
+			});
+			$(".anniu1_on").on("click", function() {
+				blone1 = false
+					$(".anniu1_jian").animate({
+						left: "1px"
+					}, 300);
+					$(".anniu1").css("background", "#F6F6F6");
+					$(".anniu_mengban").hide();
+					//获得的米粒
+					if($(".section2_bottom").css("display") == "none"){
+		          		if(($("#div").val() * $(".ret").html() / 100) <200){
+		            		var mi = ($("#div").val() * $(".ret").html() / 100).toFixed(2);
+		            	}else{
+		            		var mi = 200.00;
+		            	}
+		          	}else{
+		          	var mi = ($("#div").val() * $(".ret").html() / 100).toFixed(2);	
+		         	}
+					$(".acquire").html("您可获得" + mi + "米");
+				
+
+			});
+            $("#div").on("input", function() {
+          	if($(".section2_bottom").css("display") == "none"){
+          		if(($("#div").val() * $(".ret").html() / 100) <200){
+            		var mi = ($("#div").val() * $(".ret").html() / 100).toFixed(2);
+            	}else{
+            		var mi = 200.00;
+            	}
+          	}else{
+          		var mi = ($("#div").val() * $(".ret").html() / 100).toFixed(2);
+          		$(".acquire").html("您可获得" + ($("#div").val() * $(".ret").html() / 100).toFixed(2) + "米");
+         	}
+				$(".acquire").html("您可获得" + mi + "米");
+                if($("#div").val() == ''){
+                	$(".anniu_jian").animate({
+						left: "1px"
+					}, 300);
+					$(".anniu").css("background", "#F6F6F6");
+					$(".anniu ul").css("color", "#666666");
+					$(".anniu1_mengban").hide();
+					$(".anniu1_jian").animate({
+						left: "1px"
+					}, 300);
+					$(".anniu1").css("background", "#F6F6F6");0
+					$(".anniu_mengban").hide();
+					//获得的米粒
+					
+                }
+				if($(".anniu_mengban").css("display") == "block") {
+					$(".anniu1_mengban").css("display", "none") 
+					if(($("#div").val() * $(".ret").html() / 100) <200){
+						var bili = ($("#div").val() * $(".ret").html() / 100).toFixed(2)
+					}
+						else{
+							var bili =200.00;
+						}
+						if(bili * 1 <= $("#kyye").html() * 1) {
+							$(".acquire").html("您使用米券抵扣" + bili + "元")
+						} else {
+							$(".acquire").html("您使用米券抵扣" + $("#kyye").html() + "元")
+						}
+					return
+				} else {
+					$(".anniu_mengban").css("display", "none")
+					return
+				}
+				if($(".anniu1_mengban").css("display") == "block") {
+					
+					$(".anniu_mengban").css("display", "none")
+					return
+				} else {
+					$(".anniu1_mengban").css("display", "none")
+					$(".acquire").html("您可获得" + ($(this).val() * $(".ret").html() / 100).toFixed(2) + "米");
+					return
+				}
+
+			});
+			//支付的点击事件
+			$(".zhifu_btn").on("click", function() {
+				pandaun();
+
+			})
+			//点击取消的事件
+			$(".call").on("click", function() {
+				$(".tanchuang_mengban").hide();
+			})
+			//点击确定的事件
+			$(".confirm").on("click", function() {
+				if($("#pass").val() == '') {
+					$(".tishi_show").html('密码不能为空!');
+					errInfo();
+					return;
+				} else {
+					$(".tanchuang_mengban").hide();
+					mima();
+
+				}
+
+			})
+		})
+		//截取url后面拼接的参数
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if(r != null) return decodeURI(r[2]);
+			return null;
+
+		}
+
+		//获取用户信息
+		function load() {
+			var token = getQueryString("key");
+//												var token = "ZWU4Zjc2YzA0NDc4NDllODg5N2QxMjZiM2VhODIyYmM%3d.Fh8WKU7CUAtEY%2fcK0%2fIaSb59m4eRJykgQXdkTEUDLQBud08oFfqxa9elVHJUZ8n%2bLqZZ%2bhkAc9m6H2L9oKyzy80eJaszMU7x8JMxacSaeHw%3d.370E842148BB9795C3566AE682620F98D9CEB323FBA658A92F81B43F4B42AAD9DEFC4DA935DA78BE21A0F2B79C625F8559CA3302D6E10A78A043993CD80454A6"
+			var QrNum = getQueryString("qr");
+//									var QrNum = '631c1a1a-21ee-4cf7-9b85-7b58f1807180';
+			var datajsonM = JSON.stringify({
+				"Token": token,
+				"version": "string",
+				"reqTime": 0,
+				"reqData": QrNum
+			});
+			$.ajax({
+				type: "post",
+				url:"/api/v1.0/Pay/QrPay",
+				data: datajsonM,
+				dataType: "json",
+				contentType: 'application/json',
+				success: function(data) {
+					if(data.result == true) {
+						if(data.result_Data.isFirst == false){
+							$(".section2_bottom").show();
+						}
+						$("#kyye").html(data.result_Data.grain);
+						$(".section2_top_left p i").html(data.result_Data.balance);
+						$(".section_mingzi").html('<img src="img/icon-dianpu-2.png" />'+data.result_Data.storeName);
+						$(".ret").html(data.result_Data.rate);
+						$(".userid").html(data.result_Data.userId);
+						$(".storeid").html(data.result_Data.storeId);
+					}
+				},
+				error: function(err) {
+					console.log(err)
+				},
+				async: true
+			});
+
+		}
+		//判断是否微信打开
+		function is_weixn() {
+			var ua = navigator.userAgent.toLowerCase();
+			if(ua.match(/MicroMessenger/i) == "micromessenger") {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		//判断支付方式
+		function pandaun() {
+			amount = "";
+			balance = "";
+			grain = "";
+			function validUserPhoneNum(n) {
+				if(!n) return "0";
+				var o = /(^[0-9]([0-9]{1,9})?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[1-9]\.[0-9](0-9)?$)/;
+				return o.test(n) ? "1" : "2"
+			}
+			var num = 99999;
+			if($("#div").val()>num){
+				$(".tishi_show").html('支付金额不能超过10万！');
+				errInfo();
+				$("#div").focus(function(){
+					$(this).val('');
+					$(".acquire").html("您可获得" + ($(this).val() * $(".ret").html() / 100).toFixed(2) + "米");
+				})
+				return;
+			}
+			if(validUserPhoneNum($("#div").val()) == 2) {
+				$(".tishi_show").html('请输入正确的金额!');
+				errInfo();
+				$("#div").focus(function(){
+					$(this).val('');
+					$(".acquire").html("您可获得" + ($(this).val() * $(".ret").html() / 100).toFixed(2) + "米");
+				})
+				return;
+			}else if(validUserPhoneNum($("#div").val()) == 0) {
+				$(".tishi_show").html('请输入正确的金额!');
+				errInfo();
+				$("#div").focus(function(){
+					$(this).val('');
+					$(".acquire").html("您可获得" + ($(this).val() * $(".ret").html() / 100).toFixed(2) + "米");
+				})
+				return;
+			}
+			else {
+				$("#pass").val('')
+				if($("#div").val() < 0.01) {
+					$(".tishi_show").html('请输入正确金额!');
+					errInfo();
+					return;
+				}
+				if(blone == false && blone1 == false) {
+					amount = $("#div").val();
+					balance = 0;
+					grain = 0;
+					pay();
+					return
+				} else if(blone == false && blone1 == true) {
+					
+					amount = $("#div").val();
+					balance = 0;
+					if(($("#div").val() * $(".ret").html() / 100)<200){
+						var guli = ($("#div").val() * $(".ret").html() / 100).toFixed(2);
+					}else{
+						var guli = 200.00;
+					}
+					
+					if(guli <= $("#kyye").html()) {
+						grain = guli;
+					} else {
+						grain = $("#kyye").html()
+					}
+					pay();
+					return
+
+				} else {
+					if(parseFloat($(".section2_top_left p i").html()) >= parseFloat($("#div").val())) {
+						amount = $("#div").val();
+						balance = $(".section2_top_left p i").html();
+						grain = 0;
+						$(".tanchuang_mengban").show();
+						return;
+					}else{
+						amount = $("#div").val();
+						balance = $(".section2_top_left p i").html();
+						grain = 0;
+						pay();
+						return
+					}
+
+				}
+			}
+		}
+		
+		//密码接口
+		function mima() {
+//												var token = "ZWU4Zjc2YzA0NDc4NDllODg5N2QxMjZiM2VhODIyYmM%3d.Fh8WKU7CUAtEY%2fcK0%2fIaSb59m4eRJykgQXdkTEUDLQBud08oFfqxa9elVHJUZ8n%2bLqZZ%2bhkAc9m6H2L9oKyzy80eJaszMU7x8JMxacSaeHw%3d.370E842148BB9795C3566AE682620F98D9CEB323FBA658A92F81B43F4B42AAD9DEFC4DA935DA78BE21A0F2B79C625F8559CA3302D6E10A78A043993CD80454A6";
+			var token = getQueryString("key");
+			var datajsonM = JSON.stringify({
+				"token": token,
+				"version": "",
+				"reqTime": 0,
+				"reqData": {
+					"userId": 0,
+					"payWord": $("#pass").val()
+				}
+			});
+			$.ajax({
+				url:"/api/v1.0/Member/CheckPassword",
+				contentType: "application/json; charset=utf-8",
+				data: datajsonM,
+				type: "post",
+				dataType: "json",
+				success: function(data) {
+					console.log(data)
+					if(data.result == true&&data.result_Code == 0){
+						pay();
+						return;
+					}
+					else {
+						$(".tishi_show").html(data.result_Message);
+						errInfo();
+						return;
+					}
+
+				},
+				error: function(error) {
+					alert("网络链接超时~！");
+					return;
+				}
+			});
+
+		}
+		
+		//提交
+		function pay() {
+//												var token = "ZWU4Zjc2YzA0NDc4NDllODg5N2QxMjZiM2VhODIyYmM%3d.Fh8WKU7CUAtEY%2fcK0%2fIaSb59m4eRJykgQXdkTEUDLQBud08oFfqxa9elVHJUZ8n%2bLqZZ%2bhkAc9m6H2L9oKyzy80eJaszMU7x8JMxacSaeHw%3d.370E842148BB9795C3566AE682620F98D9CEB323FBA658A92F81B43F4B42AAD9DEFC4DA935DA78BE21A0F2B79C625F8559CA3302D6E10A78A043993CD80454A6"
+			var token = getQueryString("key");
+			var QrNum = getQueryString("qr");
+//												var QrNum = '631c1a1a-21ee-4cf7-9b85-7b58f1807180';
+			if(is_weixn()) {
+				var datajsonM = JSON.stringify({
+					"token": token,
+					"version": "",
+					"reqTime": 0,
+					"reqData": {
+						"userId": $(".userid").html(),
+						"shopId": QrNum,
+						"orderType": 1002001,
+						"amount": amount,
+						"balance": balance,
+						"grain": grain
+					}
+				});
+			} else {
+				var datajsonM = JSON.stringify({
+					"token": token,
+					"version": "",
+					"reqTime": 0,
+					"reqData": {
+						"userId": $(".userid").html(),
+						"shopId": QrNum,
+						"orderType": 1003001,
+						"amount": amount,
+						"balance": balance,
+						"grain": grain
+					}
+				});
+			}
+
+			$.ajax({
+				type: "post",
+				url:"/api/v1.0/Pay/QrSubmit",
+				data: datajsonM,
+				dataType: "json",
+				beforeSend: function(XMLHttpRequest) {
+					loadinglayer = layer.load(1, {
+						shade: [0.1, '#fff'] //0.1透明度的白色背景
+					});
+				},
+				contentType: 'application/json',
+				success: function(data) {
+					console.log(data)
+					layer.close(loadinglayer);
+					if(data.result == true && data.result_Code == 0) {
+						var payId = data.result_Data.payId;
+//						window.location.href = 'Status.html?payId='+payId;
+						if(is_weixn()) {
+							window.location.href = data.result_Data.payUrl;
+							return;
+						}
+
+						if(u.indexOf('iPhone') > -1) {
+							SendPay(StatusUrl + data.result_Data.payId);
+							window.location.href = data.result_Data.payUrl;
+							return;
+						}
+
+						if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
+							window.zf.SendPay(StatusUrl + data.result_Data.payId);
+							window.location.href = data.result_Data.payUrl;
+							return;
+						}
+					}else{
+						$(".tishi_show").html(data.result_Message);
+						errInfo();
+						return;
+					}
+				},
+				error: function(err) {
+					alert("网络链接超时~！")
+				},
+				async: true
+			});
+		}
+	</script>
+
+</html>

@@ -1,0 +1,106 @@
+body,html{
+	background: #7733d6;
+	position: relative;
+}
+.return{
+	width: .8rem;
+	height: .8rem;
+	position: fixed;
+	top: 5%;
+	left: 5%;
+	border-radius:50%;
+	background: rgba(0,0,0,.7);
+	overflow: hidden;
+	text-align: center;
+}
+.return img{
+	width: 35%;
+	margin-top: .15rem;
+}
+.section{
+	width: 100%;
+}
+.section img{
+	width: 100%;
+}
+.section1{
+	width: 100%;
+}
+.section1 img{
+	width: 100%;
+}
+.section2{
+	width: 95%;
+	margin-left: 2.5%;
+	margin-top: .2rem;
+	overflow: hidden;
+}
+.section2_left{
+	width: 47%;
+	float: left;
+}
+.section2_left img{
+	width: 100%;
+}
+.section2_right{
+	width: 53%;
+	float: right;
+}
+.section2_right img{
+	width: 97.5%;
+	margin-left: 2.5%;
+}
+.shuihu{
+	margin-top: .1rem;
+}
+.section3{
+	width: 100%;
+	margin-top: .16rem;
+	margin-bottom: .16rem;
+}
+.section3 ul{
+	width: 95%;
+	margin-left: 2.5%;
+	display: flex;
+	justify-content:space-between;
+}
+.section3 ul li{
+	width: 24%;
+}
+.section3 ul li img{
+	width: 100%;
+}
+.section4{
+	width: 100%;
+}
+.section4 img{
+	width: 95%;
+	margin-left: 2.5%;
+}
+.section5{
+	width: 100%;
+	margin-top: .24rem;
+}
+.section5 ul{
+	width: 95%;
+	margin-left: 2.5%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content:space-between;
+}
+.section5 ul li{
+	width: 49%;
+	margin-bottom: .1rem;
+}
+.section5 ul li img{
+	width: 100%;
+}
+.footer{
+	width: 100%;
+	text-align: center;
+}
+.footer img{
+	width: 34%;
+	margin-top: .6rem;
+	margin-bottom: .5rem;
+}

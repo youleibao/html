@@ -1,0 +1,199 @@
+body,html{
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	position: relative;
+}
+.kuang{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background:url(../img/beijing.png) no-repeat center;
+	background-size: 100% 100%;
+}
+.beijing{
+	position: absolute;
+	width: 90%;
+	height: 50%;
+	left: 5%;
+	top: 3.9rem;
+	background: url(../img/zhuangpan.gif) no-repeat center;
+	background-size:100% 100% ;
+}
+#choujiangUL{
+	list-style: none;
+	position: absolute;
+	width: 90%;
+	height: 90%;
+	left: 6%;
+	top: 6%;
+}
+.zhezhao{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	/*background: red;*/
+}
+#choujiangUL li{
+  float: left;
+  width: 33%;
+  height: 33%;
+  padding: .03rem .03rem;
+  border-radius: .1rem;
+  text-align: center;
+  position: relative;
+ 
+}
+#btnChouj img{
+ 	 width: 100%;
+ 	 height: 100%;
+}
+.title{
+	width: 100%;
+	position: fixed;
+	top: 1.96rem;
+	color: white;
+	font-size: .4rem;
+	text-align: center;
+}
+/*.lunbo_kuang{
+	width: 100%;
+	height: .5rem;
+	padding-bottom: .1rem;
+	margin-top: 2.7rem;
+}*/
+.lunbo_kuang {
+    width: 100%;
+    height: .5rem;
+    padding-bottom: .1rem;
+    margin-top: 2.7rem;
+
+}
+.content{
+	width:95%;
+	height: 95%;
+	background:url(../img/beijing01@2x.png) no-repeat center;
+	background-size: 100% 100%;
+	margin-left: 1.5%;
+	margin-top: 1.5%;
+	border-radius: .1rem;
+}
+.content img{
+	width: 40%;	
+	margin-top: 20%;
+}
+.content p{
+	font-size: .28rem;
+}
+.active{
+	background: #fdd224;
+	z-index: 100;
+}
+.tanchuang{
+	width: 100%;
+	height: 50%;
+	position: fixed;
+	top: 20%;
+	background: url(../img/beijingguang.png) no-repeat center;
+	background-size: 100% 100%;
+	z-index: 200;
+	/*display: none;*/
+}
+.biao{
+	width: 90%;
+    margin-left: 5%;
+    margin-top: -14%;
+}
+.tanchuang_content{
+	width: 70%;
+	margin-left: 15%;
+	background: white;
+	text-align: center;
+	margin-top: -8%;
+	border-radius: .2rem;
+}
+.mili{
+	padding-top: .5rem;
+	font-size: .6rem;
+	color: #FC4956;
+}
+.queding{
+	width: 50%;
+	margin-top: .64rem;
+	margin-bottom: .25rem;
+}
+.tishi{
+	font-size: .25rem;
+	color: #FF636E;
+	padding-bottom: .5rem;
+}
+.guize{
+	width: 90%;
+	position: fixed;
+	margin-left: 5%;
+	top: 83%;
+	z-index: 202;
+	color: #FFE400;
+}
+.bt{
+	font-size: .32rem;
+}
+.nei{
+	width: 100%;
+	height: 1.5rem;
+	overflow-x:auto; 
+	overflow-y:auto;
+	font-size: .26rem;
+}
+#marquee2 {
+	width: 80%;
+	margin: 0 auto;
+	height: .5rem;
+	margin: 0 auto;
+	overflow: hidden;
+	background: url(../img/gundongtiao@2x.png) no-repeat center;
+	background-size: 100% 100%;
+    /*margin-top: .2rem;*/
+}
+#marquee2 ul{
+	    width: 9900px;
+    line-height: .35rem;
+}
+#marquee2 ul li {
+	height: 35px;
+	float: left;
+	width: 270px;
+	font-size: .24rem;
+	line-height: .35rem;
+	border-radius: 16px;
+	margin: 0 auto;
+	margin-left: .2rem;
+	color: #ffe400;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+}
+#marquee2 ul li span{
+	display: inline-block;
+	margin-top: .1rem;
+	margin-left: 1%;
+}
+
+.tishi_show {
+	width: 50%;
+	position: fixed;
+	left: 25%;
+	bottom: 30%;
+	display: inline-block;
+	background: black;
+	color: white;
+	font-size: .3rem;
+	text-align: center;
+	/*display: none;*/
+}

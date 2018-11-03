@@ -1,0 +1,23 @@
+body,html{
+	background: #F4F4F4;
+}
+.section{
+	width: 100%;
+	background: white;
+	margin-bottom: .2rem;
+}
+.section h4{
+	width: 90%;
+	padding-top: .4rem;
+	margin-left: 5%;
+	font-size: .28rem;
+	text-indent: 2em;
+}
+.section p{
+	width: 90%;
+	margin-left: 5%;
+	text-indent: 2em;
+	font-size: .26rem;
+	color: #999999;
+	line-height: .5rem;
+}

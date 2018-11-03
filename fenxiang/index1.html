@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+
+	<body>
+		<div class="kuang">
+			<div class="title">
+				<p>获得幸运大转盘抽奖<span class="ci"></span>次</p>
+			</div>
+			<div class="lunbo_kuang">
+
+				<!--翻滚-->
+				<div id="marquee2">
+					<ul>
+						<!--<li>5465465</li>
+						<li>5465465</li>
+						<li>5465465</li>
+						<li>5465465</li>
+						<li>5465465</li>
+						<li>5465465</li>
+						<li>5465465</li>-->
+					</ul>
+				</div>
+				<!--滚动结束-->
+
+			</div>
+
+			<div class="beijing">
+				<ul id="choujiangUL">
+					<li class="prize-0 active">
+						<!--<div class="content">
+							<img src="img/xiexiecanyu@2x.png" />
+							<p>谢谢参与4</p>
+						</div>-->
+					</li>
+					<li class="prize-1">
+						<!--<div class="content">
+							<img src="img/xiexiecanyu@2x.png" />
+							<p>谢谢参与4</p>
+						</div>-->
+					</li>
+					<li class="prize-2">
+						<!--<div class="content">
+							<img src="img/xiexiecanyu@2x.png" />
+							<p>谢谢参与4</p>
+						</div>-->
+					</li>
+					<li class="prize-7">
+						<!--<div class="content">
+							<img src="img/xiexiecanyu@2x.png" />
+							<p>谢谢参与4</p>
+						</div>-->
+					</li>
+					<li id="btnChouj">
+						<img src="img/jilichoujiang.png" />
+						<p class="zhezhao">1</p>
+					</li>
+					<li class="prize-3">
+						<!--<div class="content">
+							<img src="img/xiexiecanyu@2x.png" />
+							<p>谢谢参与4</p>
+						</div>-->
+					</li>
+					<li class="prize-6">
+						<!--<div class="content">
+							<img src="img/xiexiecanyu@2x.png" />
+							<p>谢谢参与4</p>
+						</div>-->
+					</li>
+					<li class="prize-5">
+						<!--<div class="content">
+							<img src="img/xiexiecanyu@2x.png" />
+							<p>谢谢参与4</p>
+						</div>-->
+					</li>
+					<li class="prize-4">
+						<!--<div class="content">
+							<img src="img/xiexiecanyu@2x.png" />
+							<p>谢谢参与4</p>
+						</div>-->
+					</li>
+
+				</ul>
+			</div>
+
+		</div>
+		<div class="mengban" style="width: 100%;height: 100%;position: fixed; top: 0;left: 0;background: rgba(0,0,0,0.6); display: none;">
+			<div class="tanchuang">
+				<img class="biao" src="img/tankuang_01.png" />
+				<div class="tanchuang_content">
+					<p class="mili"></p>
+					<img class="queding" src="img/quedinganniu.png" />
+					<p class="tishi">已放入您的账户，快去查看吧</p>
+				</div>
+		    </div>
+		</div>
+		
+		<div class="guize">
+			<p class="bt">活动规则</p>
+			<p class="nei">
+				
+			</p>
+			
+		</div>
+		<span class="tishi_show"></span>
+	</body>
+	<script src="js/test.js" type="text/javascript"></script>
+	<script src="js/jquery-1.8.2.js" type="text/javascript"></script>
+	<script src="js/jquery.kxbdMarquee.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		//显示隐藏
+		function errInfo() {
+			$('.tishi_show').fadeIn();
+			setTimeout(function() {
+				$('.tishi_show').fadeOut();
+			}, 2000)
+		}
+		$(function() {
+			WinningList();
+			AwardsList()
+			load();
+			$("#marquee2").kxbdMarquee({
+				isEqual: false
+			});
+			$('#btnChouj img').click(function() {
+				draw();
+                $("#btnChouj img").attr("src", "img/jilichoujiang_dianji.png");
+                $(".zhezhao").show()
+			});
+			//点击确定事件
+			$(".queding").click(function() {
+				$(this).attr("src", "img/quedinganniu_dianji.png");
+				$(".mengban").hide();
+				$("#btnChouj img").attr("src", "img/jilichoujiang.png")
+				$(".zhezhao").hide()
+				load();
+			})
+			//判断
+			var mLen=$(".content .Money");
+			for(var i=0;i<mLen.length;i++){
+				var con = $(mLen[i]).html();
+				if(con=="0"){
+					$(mLen[i]).hide();
+				}
+			}
+			if($(".mili span").html() == 0){
+//				$(".mili span").html("")/
+			}
+		})
+		var roll = {
+			Msgs: ["一等獎", "二等獎", "三等獎", "四等獎", "五等獎", "六等獎", "七等獎", "八等獎"],
+			index: 0, //当前位置索引
+			times: 0, //次数
+			roundTimes: 0, //圈数
+			timer: 0, //循环器
+			speed: 300, //转动速度
+			isActive: false, //游戏是否在运行
+			Init: function() {
+				///初始化
+				this.roundTimes = 0;
+				this.isActive = true;
+			},
+			Start: function(cls, callback) {
+				var that = this;
+				if(that.isActive == true) {
+					$(".tishi_show").html('游戏正在进行!');
+					errInfo();
+					return;
+				}
+				if(that.times == $(".ci").html()) {
+					$(".tishi_show").html('机会用完了哦!');
+					errInfo();
+					return;
+
+				}
+
+				that.Init();
+				var interVal = setInterval(function() {
+					if(that.index == 8) {
+						that.index = 0;
+						that.roundTimes++;
+					}
+					if(that.roundTimes == 6) {
+						that.index = parseInt(Math.random() * 7);
+						$('li[class^=' + cls + ']').removeClass('active');
+						$('.' + cls + '-' + that.index).addClass('active');
+						that.isActive = false;
+						clearInterval(that.timer);
+						if(Object.prototype.toString.call(callback) == '[object Function]') {
+							callback.call(this,that.index,that.Msgs[that.index]);
+							
+						}
+					} else {
+						$('li[class^=' + cls + ']').removeClass('active');
+						$('.' + cls + '-' + that.index).addClass('active');
+						that.index++;
+					}
+
+				}, 100);
+				that.timer = interVal;
+				that.times++;
+			}
+		}
+		//获取url的参数
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if(r != null) return unescape(r[2]);
+			return null;
+		}
+//		var token = getQueryString("token");
+		var token = "MGQwYzVjMjQwMjc5NDIxYWIyMDFiZjQyOGEwNTExOTA%3d.tldODzEVYjB%2bPqM8It0lZlav0mNdzVGUgmKg1NvGR9EVpdYh5bQzg7dMCszX3ttHXAbkxBaBVGr7yDTFyuibeQ%3d%3d.752F952A61828953EB9959E6A09EDF2A3EB6C16731C6DDDC1DAAA215B9BB5010D32341D17EBABAAA552CACA11D4508EE21BAA60654F4B509D4EF2DF7A1E5AB9F";
+		var ActivityId = 30;
+        //规则接口
+		function load() {
+			var datajson = JSON.stringify({
+				"Token": token,
+				"Version": "",
+				"ReqTime": 0,
+				"ReqData": {
+					"ActivityId":ActivityId
+				}
+			});
+			
+			$.ajax({
+				type: "post",
+				url: "/api/Activity/PostActiveRuleCount",
+				data: datajson,
+				dataType: "json",
+				contentType: 'application/json',
+				success: function(data) {
+					console.log(data)
+					if(data.Result == true&&data.Result_Code == 0) {
+						$(".ci").html(data.Result_Data.Count);
+						$(".nei").html(data.Result_Data.Rules);
+					}else{
+						
+						$(".tishi_show").html(data.Result_Message);
+						errInfo();
+						return;
+					}
+				},
+				error: function(err) {
+					console.log(err)
+				},
+				async: false
+			});
+
+		}
+		//记录列表接口
+		function WinningList() {
+			var datajson1 = JSON.stringify({
+				"Token": token,
+				"Version": "",
+				"ReqTime": 0,
+				"ReqData": {
+					"ActivityId":ActivityId
+				}
+			});
+			
+			$.ajax({
+				type: "post",
+				url: "/api/Activity/PostAwardRecordList",
+				data: datajson1,
+				dataType: "json",
+				contentType: 'application/json',
+				success: function(data) {
+					console.log(data)
+					if(data.Result == true&&data.Result_Code == 0) {
+						var htmllist = '';
+						for(var i = 0;i<data.Result_Data.List.length;i++){
+							var shouji = data.Result_Data.List[i].UserName;
+							var nshouji = shouji.substr(0,3)+"****"+shouji.substr(7)
+							htmllist +='<li>';
+							htmllist +='<span>'+data.Result_Data.List[i].Message+'</span>';
+							htmllist +='</li>'
+							
+						}
+						$("#marquee2 ul").html(htmllist)
+					}else{
+						$(".tishi_show").html(data.Result_Message);
+						errInfo();
+						return;
+					}
+				},
+				error: function(err) {
+					console.log(err)
+				},
+				async: false
+			});
+
+		}
+		//奖品列表接口
+		function AwardsList(){
+			var datajson2 = JSON.stringify({
+				"Token": token,
+				"Version": "",
+				"ReqTime": 0,
+				"ReqData": {
+					"ActivityId":ActivityId
+				}
+			});
+			
+			$.ajax({
+				type: "post",
+				url: "/api/Activity/PostPrizeItemList",
+				data: datajson2,
+				dataType: "json",
+				contentType: 'application/json',
+				success: function(data) {
+					if(data.Result == true&&data.Result_Code == 0) {
+							$('<div class="content" id="'+data.Result_Data.List[1].PrizeId+'"><img src="'+data.Result_Data.List[1].PrizeImg+'" /><p><span class="Money">'+data.Result_Data.List[1].PrizeMoney+'</span><span class="PrizeName">'+data.Result_Data.List[1].PrizeName+'</span></p></div>').appendTo($(".prize-1"))
+							$('<div class="content" id="'+data.Result_Data.List[2].PrizeId+'"><img src="'+data.Result_Data.List[2].PrizeImg+'" /><p><span class="Money">'+data.Result_Data.List[2].PrizeMoney+'</span><span class="PrizeName">'+data.Result_Data.List[2].PrizeName+'</span></p></div>').appendTo($(".prize-2"))
+							$('<div class="content" id="'+data.Result_Data.List[3].PrizeId+'"><img src="'+data.Result_Data.List[3].PrizeImg+'" /><p><span class="Money">'+data.Result_Data.List[3].PrizeMoney+'</span><span class="PrizeName">'+data.Result_Data.List[3].PrizeName+'</span></p></div>').appendTo($(".prize-3"))
+							$('<div class="content" id="'+data.Result_Data.List[4].PrizeId+'"><img src="'+data.Result_Data.List[4].PrizeImg+'" /><p><span class="Money">'+data.Result_Data.List[4].PrizeMoney+'</span><span class="PrizeName">'+data.Result_Data.List[4].PrizeName+'</span></p></div>').appendTo($(".prize-4"))
+							$('<div class="content" id="'+data.Result_Data.List[5].PrizeId+'"><img src="'+data.Result_Data.List[5].PrizeImg+'" /><p><span class="Money">'+data.Result_Data.List[5].PrizeMoney+'</span><span class="PrizeName">'+data.Result_Data.List[5].PrizeName+'</span></p></div>').appendTo($(".prize-5"))
+							$('<div class="content" id="'+data.Result_Data.List[6].PrizeId+'"><img src="'+data.Result_Data.List[6].PrizeImg+'" /><p><span class="Money">'+data.Result_Data.List[6].PrizeMoney+'</span><span class="PrizeName">'+data.Result_Data.List[6].PrizeName+'</span></p></div>').appendTo($(".prize-6"))
+							$('<div class="content" id="'+data.Result_Data.List[7].PrizeId+'"><img src="'+data.Result_Data.List[7].PrizeImg+'" /><p><span class="Money">'+data.Result_Data.List[7].PrizeMoney+'</span><span class="PrizeName">'+data.Result_Data.List[7].PrizeName+'</span></p></div>').appendTo($(".prize-7"))
+							$('<div class="content" id="'+data.Result_Data.List[0].PrizeId+'"><img src="'+data.Result_Data.List[0].PrizeImg+'" /><p><span class="Money">'+data.Result_Data.List[0].PrizeMoney+'</span><span class="PrizeName">'+data.Result_Data.List[0].PrizeName+'</span></p></div>').appendTo($(".prize-0"))
+							
+					}else{
+						$(".tishi_show").html(data.Result_Message);
+						errInfo();
+						return;
+					}
+				},
+				error: function(err) {
+					console.log(err)
+				},
+				async: false
+			});
+		}
+		//抽奖接口
+		function draw(){
+			var datajson3 = JSON.stringify({
+				"Token": token,
+				"Version": "",
+				"ReqTime": 0,
+				"ReqData": {
+					"ActivityId":ActivityId
+				}
+			});
+			
+			$.ajax({
+				type: "post",
+				url: "/api/Activity/PostLuckDraw",
+				data: datajson3,
+				dataType: "json",
+				contentType: 'application/json',
+				success: function(data) {
+					console.log(data)
+					if(data.Result == true&&data.Result_Code == 0) {
+						$(".mili").html("")
+						if(data.Result_Data.Data.PrizeMoney != "0"){
+				$('<span>'+data.Result_Data.Data.PrizeMoney+'</span><span>'+data.Result_Data.Data.PrizeName+'</span>').appendTo($(".mili"))
+				         }
+						else{
+							$('<span>'+data.Result_Data.Data.PrizeName+'</span>').appendTo($(".mili"))
+						}
+				roll.Start('prize', function(index) {
+					
+					setTimeout(function() {
+						$("#choujiangUL li").removeClass("active");
+						if($("#choujiangUL li").children().attr("id") == data.Result_Data.Data.PrizeId){
+								$(this).parents().addClass("active");
+							}
+					 
+					}, 1000)
+				    $(".mengban").show();
+					
+				});
+						}else{
+							$(".tishi_show").html(data.Result_Message);
+							errInfo();
+							return;
+						}
+//						
+				},
+				error: function(err) {
+					console.log(err)
+				},
+				async: false
+			});
+		}
+	</script>
+
+</html>

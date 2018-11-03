@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>消息详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../public/reset.css" />
+		<style type="text/css">
+			
+			header {
+				width: 100%;
+				background: black;
+				height: .86rem;
+				position: fixed;
+				top: 0;
+				z-index: 2;
+			}
+			
+			nav {
+				width: 100%;
+				overflow: hidden;
+			}
+			
+			.return {
+				float: left;
+				width: 4%;
+				margin-top: 2%;
+				margin-left: 2%;
+			}
+			
+			.share {
+				width: 6%;
+				float: left;
+				margin-top: 2%;
+				margin-left: 2%;
+			}
+			
+			.cart_p {
+				margin-left: 2%;
+				text-align: center;
+				width: 82%;
+				color: white;
+				float: left;
+				line-height: .86rem;
+			}
+			
+			.section {
+				width: 100%;
+				overflow: hidden;
+				/*margin-top: .86rem;*/
+			}
+			#titleData{
+				width: 100%;
+				text-align: center;
+			}
+			#cData{
+				width: 100%;
+			}
+			#cData img{
+				margin-left: 5%;
+				display:block;
+				width: 90%;
+			}
+			#cData p{
+				margin-left: .2rem;
+			}
+			#cData span{
+				margin-left: .2rem;
+			}
+			.time{
+				width: 100%;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<div class="section">
+			<h4 id="titleData" style="margin-top: 20px;"></h4>
+			<p class="time"></p>
+			<div id="cData" style="background: transparent;">
+				<img class="cData_img" src=""/>
+				<p class="cData_p"></p>
+			</div>
+		</div>
+	</body>
+	<script src="../public/jquery-1.9.1.js" type="text/javascript"></script>
+	<script src="../public/mine.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		//获取url的参数
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if(r != null) return unescape(r[2]);
+			return null;
+		}
+		//获取数据信息
+//		var id = getQueryString('id');
+         var id = 4;
+		$.ajax({
+			type:"get",
+			url:"http://yantao.52expo.top/api/v1.0/StoreServer/SysMsg/"+id,
+			dataType: "json",
+			success:function(data){
+				if(data.result == true){
+					$("#titleData").html(data.result_Data.title);
+					$(".time").html((data.result_Data.createTime).replace('T',' '))
+					$(".cData_p").html(data.result_Data.content);
+				}
+			},
+			error:function(err){
+				console.log(err)
+			},
+			async:false
+		});
+	</script>
+
+</html>

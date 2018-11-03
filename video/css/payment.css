@@ -1,0 +1,138 @@
+body,html{
+	position: relative;
+	background: #F4F4F4;
+}
+.section{
+	width: 100%;
+	height:2rem;
+	text-align: center;
+	background: white;
+}
+.section p{
+	padding-top: .8rem;
+	margin-bottom: .8rem;
+	font-size: .28rem;
+}
+.section p span{
+	font-size: .48rem;
+	font-weight:bold;
+	color: #FF2651;
+}
+.section1{
+	width: 100%;
+	margin-top: .1rem;
+	background: white;
+}
+.kuang{
+	width: 90%;
+	margin-left: 5%;
+	height: 1.2rem;
+	overflow: hidden;
+	
+}
+.kuang_left{
+	width: 20%;
+	float: left;
+	margin-top: .15rem;
+	text-align: center;
+}
+.kuang_left img{
+	width: .8rem;
+	height: .8rem;
+}
+.kuang_content{
+	width: 60%;
+	float: left;
+	margin-top: .15rem;
+}
+.kuang_content h5{
+	margin: 0;
+	padding: 0;
+	font-size: .28rem;
+}
+.kuang_content p{
+	font-size: .24rem;
+	color: #999999;
+}
+.kuang_right{
+	width: 20%;
+	float: left;
+	margin-top: .3rem;
+	text-align: center;
+}
+.kuang_right img{
+	width: .5rem;
+	height: .5rem;
+}
+
+.kuang1{
+	width: 90%;
+	margin-left: 5%;
+	height: 1.2rem;
+	overflow: hidden;
+	border-top: 1px solid #E3E3E3;
+}
+.kuang1_left{
+	width: 20%;
+	float: left;
+	margin-top: .15rem;
+	text-align: center;
+}
+.kuang1_left img{
+	width: .8rem;
+	height: .8rem;
+	
+}
+.kuang1_content{
+	width: 60%;
+	float: left;
+	margin-top: .15rem;
+}
+.kuang1_content h5{
+	margin: 0;
+	padding: 0;
+	font-size: .28rem;
+}
+.kuang1_content p{
+	font-size: .24rem;
+	color: #999999;
+}
+.kuang1_right{
+	width: 20%;
+	margin-top: .3rem;
+	float: left;
+	text-align: center;
+}
+.kuang1_right img{
+	width: .5rem;
+	height: .5rem;
+}
+.footer{
+	width: 100%;
+	height:.9rem;
+	text-align: center;
+	background:linear-gradient(30deg,rgba(255,74,87,1) 0%,rgba(255,38,81,1) 100%);
+	position: fixed;
+	left: 0;
+	bottom: 0;
+}
+.footer p{
+	font-size: .34rem;
+	line-height: .9rem;
+	color: white;
+}
+.tishi_show {
+	width: 50%;
+	position: fixed;
+	left: 25%;
+	bottom: 40%;
+	display: inline-block;
+	background: black;
+	border-radius: .1rem;
+	line-height: .6rem;
+	color: white;
+	font-size: .3rem;
+	text-align: center;
+	z-index: 500;
+	/*display: none;*/
+}

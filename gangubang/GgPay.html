@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>支付方式</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <link rel="stylesheet" type="text/css" href="public/reset.css"/>
+	    <link rel="stylesheet" type="text/css" href="css/payment.css"/>
+		<script src="public/jquery-1.9.1.js" type="text/javascript"></script>
+		<script src="public/fastclick.js" type="text/javascript"></script>
+		<script src="public/mine.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="section">
+			<p>金额<span>￥<i class="num"></i></span></p>
+		</div>
+		<div class="section1">
+			<div class="kuang" auto="0">
+				<div class="kuang_left">
+				    <img src="img/icon_wxzf.png"/>
+				</div>
+				<div class="kuang_content">
+					<h5>微信支付</h5>
+					<p>推荐已安装微信的用户使用</p>
+				</div>
+				<div class="kuang_right">
+				    <img class="xuanzhong" src="img/icon_weixuan.png"/>
+				</div>
+			</div>
+			<div class="kuang1" auto="1">
+				<div class="kuang1_left">
+				    <img src="img/icon_zfbzf.png"/>
+				</div>
+				<div class="kuang1_content">
+					<h5>支付宝支付</h5>
+					<p>推荐支付宝用户使用</p>
+				</div>
+				<div class="kuang1_right">
+				    <img class="xuanzhong1" src="img/icon_weixuan.png"/>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<p>确认支付</p>
+		</div>
+		<span class="tishi_show"></span>
+	</body>
+	<script type="text/javascript">
+		//获取url后面跟的参数
+		function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+		//显示隐藏
+		function errInfo() {
+			$('.tishi_show').fadeIn();
+			setTimeout(function() {
+				$('.tishi_show').fadeOut();
+			}, 2000)
+		}
+		var id = getUrlParam('orderIds');
+        var systype = getUrlParam('type');
+        var num = getUrlParam('num');
+//      var num = 200;
+        var user = "";
+        var Url = "http://www.gangumall.cn/api/Payment/GetSubOrder?orderIds=" + id + "&PayUser=";
+        var types = '';
+		$(function(){
+			 if (id == null) {
+		            $(".tishi_show").html('订单不存在!');
+					errInfo();
+		        }
+			$(".kuang").on("click",function(){
+				$(".xuanzhong").attr("src","img/icon_xuanzhong.png");
+				$(".xuanzhong1").attr("src","img/icon_weixuan.png");
+				types = $(this).attr("auto");
+			})
+			$(".kuang1").on("click",function(){
+				$(".xuanzhong1").attr("src","img/icon_xuanzhong.png");
+				$(".xuanzhong").attr("src","img/icon_weixuan.png");
+				types = $(this).attr("auto");
+			})
+			$(".num").html(num)
+			//确认支付事件
+			$(".footer").on("click",function(){
+				if(types == 0){
+					weixin();
+				}else{
+					ali();
+				}
+			})
+		})
+		//微信
+		function weixin(){
+			window.location.href = 'submit.ashx?type=0&systype=' + systype + "&Url=" + Url + result;
+            return false;
+		}
+		//支付宝
+		function ali(){
+			window.location.href = 'submit.ashx?type=1&systype=' + systype + "&Url=" + Url + "payusers";
+            return false;
+		}
+	</script>
+</html>

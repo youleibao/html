@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+	<head>
+		<title>购物赢免单</title>
+		<link rel="stylesheet" href="css/style.css?t=2018082012121" />
+		<link rel="stylesheet" type="text/css" href="js/layer-v3.1.1/layer/theme/default/layer.css" />
+		<script type="text/javascript">
+(function(designWidth, maxWidth) {
+	var doc = document,
+	win = window,
+	docEl = doc.documentElement,
+	remStyle = document.createElement("style"),
+	tid;
+
+	function refreshRem() {
+		var width = docEl.getBoundingClientRect().width;
+		maxWidth = maxWidth || 540;
+		width>maxWidth && (width=maxWidth);
+		var rem = width * 100 / designWidth;
+		remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+	}
+
+	if (docEl.firstElementChild) {
+		docEl.firstElementChild.appendChild(remStyle);
+	} else {
+		var wrap = doc.createElement("div");
+		wrap.appendChild(remStyle);
+		doc.write(wrap.innerHTML);
+		wrap = null;
+	}
+	//要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+	refreshRem();
+
+	win.addEventListener("resize", function() {
+		clearTimeout(tid); //防止执行两次
+		tid = setTimeout(refreshRem, 300);
+	}, false);
+
+	win.addEventListener("pageshow", function(e) {
+		if (e.persisted) { // 浏览器后退的时候重新计算
+			clearTimeout(tid);
+			tid = setTimeout(refreshRem, 300);
+		}
+	}, false);
+
+	if (doc.readyState === "complete") {
+		doc.body.style.fontSize = "16px";
+	} else {
+		doc.addEventListener("DOMContentLoaded", function(e) {
+			doc.body.style.fontSize = "16px";
+		}, false);
+	}
+})(750, 750);
+
+		</script>
+	</head>
+	<body>
+		<div class="cj-wrapper">
+			<div class="cj-top">
+				<img onclick="return false" src="img/top.png">
+				<p class="cj-overtime"></p>
+				<div class="cj-head">
+					<!--翻滚-->
+					<div id="marquee2" style="display: none;">
+						<ul>
+				
+						</ul>
+					</div>
+					<!--滚动结束-->
+				</div>
+			</div>
+			<!--抽奖区-->
+			<div class="cj-Draw-area">
+				<!--<div class="cj-draw-tit">您有<span>0</span>次抽奖机会</div>-->
+				<div id="lottery">
+					<table border="0" cellpadding="0" cellspacing="0" style="width:90%;margin-top: 1rem;">
+						<tbody>
+							<tr class="lottery-list">
+								<td class="lottery-unit lottery-unit-0"><img src="img/gu.png"> <span></span></td>
+								<td class="lottery-unit lottery-unit-1"><img src="img/gu.png"><span></span></td>
+								<td class="lottery-unit lottery-unit-2"><img src="img/gu.png"><span></span></td>
+								<td class="lottery-unit lottery-unit-3"><img src="img/gu.png"> <span></span></td>
+							</tr>
+							<tr> 
+								<td class="lottery-unit lottery-unit-11"><img src="img/hongbao.png">
+									<sapn></sapn>
+								</td>
+								<td colspan="2" rowspan="2" id="cjbnt">
+									<button></button>
+								</td>
+								<td class="lottery-unit lottery-unit-4"><img src="img/gu.png"><span></span></td>
+							</tr>
+							<tr>
+								<td class="lottery-unit lottery-unit-10"><img src="img/gu.png"><span></span></td>
+								<td class="lottery-unit lottery-unit-5"><img src="img/gu.png"><span></span></td>
+							</tr>
+							<tr>
+								<td class="lottery-unit lottery-unit-9"><img src="img/gu.png"><span></span></td>
+								<td class="lottery-unit lottery-unit-8"><img src="img/gu.png"><span></span></td>
+								<td class="lottery-unit lottery-unit-7"><img src="img/gu.png"><span></span></td>
+								<td class="lottery-unit lottery-unit-6"><img src="img/gu.png"><span></span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<button class="cj-draw-btn"><img src="img/choujiangjilu.png"/></button>
+			</div>
+			<img class="beijing1" src="img/beijing_01.png"/>
+			<img class="beijing2" src="img/beijing_02.png"/>
+			<!--抽奖订单区-->
+			<div class="cj-order">
+				<div class="cj-order-tit" style="display: none;">
+					可抽奖订单
+				</div>
+				<div class="cj-order-box">
+					<ul class="cj-order-list" id="cj-order-list">
+						<li>还没有可抽奖订单哦</li>
+					</ul>
+				</div>
+			</div>
+			<!--活动规则区域-->
+			<div class="cj-rule-box">
+				<div class="cj-order-tit">
+					<img src="img/huodongguize.png"/>
+				</div>
+				<ul class="cj-guize">
+					
+				</ul>
+
+			</div>
+             <img class="beijing3" src="img/beijing_03.png"/>
+			<!--提交成功-->
+			<div class="cj-dialog-wrap" style="display:none; ">
+				<div class="cj-submit-succeed">
+					<div class="cj-submit-conten">
+						<p id="qian">0<span></span>鼓励金</p>
+						<button class="cj-dialog-close">点击领取</button>
+						<p class="cha">已放入您的余额，快去查看吧！</p>
+					</div>
+
+				</div>
+			</div>
+			<!--中奖记录-->
+			<div class="cj-dialog-wrap2" style="display: none;">
+
+			</div>
+			<div class="cj-record" style="display: none;">
+				<p class="cj-record-title">— 获奖记录 —</p>
+				<ul class="cj-rceord-list" id="tixian-list">
+					<li class="wushuju">暂无数据</li>	
+					<!--<li></li>-->
+				</ul>
+			</div>
+		</div>
+		<!--错误信息-->
+		<div class="tishi_show" style="display:none">
+			请稍后重试
+		</div>
+		<!---->
+		
+		<script src="js/jquery-1.9.1.js"></script>
+		<script src="js/layer-v3.1.1/layer/layer.js" type="text/javascript"></script>
+	    <script src="js/laypage/laypage.js" type="text/javascript"></script>
+		<script src="js/jquery.kxbdMarquee.js" type="text/javascript" charset="utf-8"></script>		
+		<script src="js/test.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/method.js?t=20180820170611" type="text/javascript" charset="utf-8"></script>		
+		<script type="text/javascript">
+			(function() {
+				$("#marquee2").kxbdMarquee({
+					isEqual: false
+				});
+			})();
+			
+				
+
+		</script>
+	</body>
+
+</html>
