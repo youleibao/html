@@ -39,6 +39,10 @@ var token =getUrlParam('token');
 	$(".cj-dialog-close").click(function() {
 		$(".cj-dialog-wrap").hide();
 	});
+	//禁止滑动
+         $('.cj-dialog-wrap').bind("touchmove",function(e){  
+                e.preventDefault();  
+        });  
 	//用户持有的订单所获得的抽奖机会列表接口
 	cjjh();
 	function cjjh() {
@@ -58,6 +62,7 @@ var token =getUrlParam('token');
 			async: false,
 			data: datajson,
 			success: function(data) {
+				console.log(data)
 				var cont = data.Data;	
 				if(data.Success == true && data.Error == 0) {
 					var html = '';				

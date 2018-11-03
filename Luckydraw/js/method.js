@@ -129,7 +129,7 @@
 			if(lottery.times < lottery.cycle) {
 				lottery.speed -= 10;
 			} else if(lottery.times == lottery.cycle) {
-               
+              
 				lottery.prize = place; //转动的位置
 //              
 			} else {
@@ -162,7 +162,6 @@
 		lottery.init('lottery');
 		$("#lottery button").click(function() {
 			//button禁止时间
-			$("#lottery button").attr("disabled", true);
 			var datajson = JSON.stringify({
 					"Token": Token,
 					"Type": "",
@@ -179,7 +178,6 @@
 				async: false,
 				data: datajson,
 				success: function(data) {
-					console.log(data)
 					if(data.Success == true && data.Error == 0) {
 						cjjh();
 						place = data.Data.Level-1;
@@ -214,12 +212,9 @@
 	};
 
 	//获奖获奖记录
-
-	var page = 1;
-
 	var off_on = true;
 	//获奖记录列表
-	inforecord(Token);
+//	inforecord(Token);
 	function inforecord(Token) {
 		var datajson = JSON.stringify({
 					"Token": Token,
@@ -238,6 +233,7 @@
 			async: false,
 			data: datajson,
 			success: function(data) {
+				console.log(data)
 				if(data.Success == true && data.Error == 0) {
 					var hjlist = data.Data;
 					if(data.Data.length == "") {
@@ -256,7 +252,7 @@
 						}
 						html += '</li>';
 					}
-					    $(".cj-rceord-list").append(html);
+					    $(".cj-rceord-list").html(html);
 					}
 
 
@@ -272,7 +268,14 @@
 	$(document).ready(function() {
 		inforecord(Token);
 	});
-
+     //中奖记录
+	$(".cj-draw-btn").click(function() {
+		$(".cj-dialog-wrap2").show();
+		$(".cj-record").show();
+		inforecord(Token);
+		$("html").css("overflow", "hidden");
+		$("body").css("overflow", "hidden");
+	});
 	//中奖记录显示
 	$(".cj-dialog-wrap2").click(function() {
 		$(".cj-dialog-wrap2").hide();
@@ -280,12 +283,4 @@
 		$("html").css("overflow", "auto");
 		$("body").css("overflow", "auto");
 	});
-	//中奖记录
-	$(".cj-draw-btn").click(function() {
-		$(".cj-dialog-wrap2").show();
-		$(".cj-record").show();
-		page = 1
-		inforecord(Token, page);
-		$("html").css("overflow", "hidden");
-		$("body").css("overflow", "hidden");
-	});
+	

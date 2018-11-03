@@ -152,14 +152,15 @@ html,
 body {
 	width: 100%;
 	background: #ff8f56;
-	overflow-x:hidden;
 	position: relative;
 }
 
 article span {
 	display: block;
 }
-
+/*::-webkit-scrollbar {
+        display: none;
+    }*/
 /*头部*/
 
 .tishi img {
@@ -200,10 +201,9 @@ article span {
 	width: 100%;
 	position: absolute;
 	color: #fff;
-	top: 70%;
+	top: 63%;
 	font-size: .22rem;
 	text-align: center;
-	top: 2.4rem;
 }
 
 #lottery button{
@@ -268,12 +268,12 @@ article span {
 }
 
 #lottery {
-	width: 100%;
+	width: 96%;
     /*width: 5.2rem;
     height: 5rem;*/
     /*background: #f3810f;*/
     margin-top: .35rem;
-    margin-left: .36rem;
+    margin-left: .42rem;
     overflow: hidden;
 }
 
@@ -338,6 +338,7 @@ article span {
 	background-size: 100%;
 	background-color: none;
 	background-color: #f3810f;
+	border-radius: .2rem;
 }
 #lottery #cjbnt:active{
 	/*background-color: rgba(115,51,196, .8);*/
@@ -389,8 +390,8 @@ article span {
 	width: 1.32rem;
 	height: 1.58rem;
 	position: absolute;
-	right: 5%;
-	top: 83%;
+	right: 0;
+	top: 72%;
 	/*z-index: 0;*/
 }
 .cj-draw-btn img{
@@ -426,7 +427,7 @@ article span {
 }
 .cj-order-box {
 	width: 6.26rem;
-	height: 4.40rem;
+	height: 5.40rem;
 	/*background: #e5d7ff;*/
 	border-radius: 10px;
 	margin: 0 auto;
@@ -439,6 +440,7 @@ article span {
 	line-height: .78rem;
 	width: 90%;
 	margin: 0 auto;
+	overflow-y: auto;
 }
 .cj-order-box ul li span{
 	display: inline-block;
@@ -449,7 +451,7 @@ article span {
 .cj-order-box ul {
 	width: 6.26rem;
 	height: 4.40rem;
-	/*overflow-y: auto;*/
+	overflow-y: auto;
 	margin-top: 1rem;
 }
 
@@ -563,7 +565,7 @@ article span {
 	z-index: 9999;
 	color: #fff;
 	left: 0;
-	right: 0;
+	overflow: hidden;
 }
 
 .cj-submit-succeed {
